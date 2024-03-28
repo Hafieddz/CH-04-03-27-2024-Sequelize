@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Hello FSW 1 Tercinta! </h1>
+    <% if (message != '') { %>
+        <div class="alert">
+            Data berhasil <%=message%>
+        </div>
+        <% } %>
+            <table>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>age</th>
+                <th>createdAt</th>
+                <th> Aksi </th>
+                <% customers.map((cust)=> { %>
+                    <tr>
+                        <td>
+                            <%= cust.id %>
+                        </td>
+                        <td>
+                            <%= cust.name %>
+                        </td>
+                        <td>
+                            <%= cust.email %>
+                        </td>
+                        <td>
+                            <%= cust.age %>
+                        </td>
+                        <td>
+                            <%= cust.createdAt %>
+                        </td>
+                        <td>
+                            <a href="/customers/edit/<%= cust.id %>">
+                                <button> Edit </button>
+                            </a>
+                            <form action="/customers/admin/delete/<%= cust.id %>" method="POST">
+                                <button> Delete </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+
+            <br>
+
+            <a href="/customers/create">
+                <button> Tambah Data Baru </button>
+            </a>
+</body>
+
+</html>
